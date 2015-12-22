@@ -1,0 +1,10 @@
+qnn-structure-creator
+   by Marcus Soll
+
+-------------------------------------------------------------------------------
+
+qnn-structure-creator is a simple tool to create network structures out of gene
+files.
+
+qnn-structure-creator is licensed under the terms of the GNU General Public 
+License Version 3 or (at your option) any later version.
