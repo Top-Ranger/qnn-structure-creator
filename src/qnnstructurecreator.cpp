@@ -356,6 +356,10 @@ void QnnStructureCreator::on_fileButton_clicked()
     }
 
     convertOneGene(filename);
+
+    QMessageBox::information(this,
+                             tr("Finished"),
+                             tr("Conversion finished"));
 }
 
 void QnnStructureCreator::on_folderButton_clicked()
@@ -371,4 +375,8 @@ void QnnStructureCreator::on_folderButton_clicked()
     {
         convertOneGene(QString("%1/%2").arg(folder_path).arg(file_name));
     }
+
+    QMessageBox::information(this,
+                             tr("Finished"),
+                             tr("Conversion finished"));
 }
