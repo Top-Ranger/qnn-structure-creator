@@ -27,7 +27,7 @@
 #include <network/gasnet.h>
 #include <network/modulatedspikingneuronsnetwork.h>
 
-#include <simulation/genericsimulation.h>
+#include <simulation/abstractsimulation.h>
 #include <simulation/tmazesimulation.h>
 #include <simulation/rebergrammarsimulation.h>
 
@@ -68,7 +68,6 @@ QnnStructureCreator::QnnStructureCreator(QWidget *parent) :
     nn_model->setStringList(nn);
 
     QStringList sim;
-    sim << "GenericSimulation";
     sim << "TMazeSimulation";
     sim << "ReberGrammarSimulation (DetectGrammar)";
     sim << "ReberGrammarSimulation (CreateWords)";
@@ -138,7 +137,7 @@ void QnnStructureCreator::convertOneGene(QString filename)
 AbstractNeuralNetwork *QnnStructureCreator::getNetwork()
 {
     AbstractNeuralNetwork *network = NULL;
-    GenericSimulation *simulation = NULL;
+    AbstractSimulation *simulation = NULL;
 
     QString selection = ui->listViewSimulation->currentIndex().data().toString();
     if(selection == "")
@@ -149,11 +148,7 @@ AbstractNeuralNetwork *QnnStructureCreator::getNetwork()
         return network;
     }
 
-    if(selection == "GenericSimulation")
-    {
-        simulation = new GenericSimulation();
-    }
-    else if(selection == "TMazeSimulation")
+    if(selection == "TMazeSimulation")
     {
         TMazeSimulation::config config;
         config.trials = 1;
